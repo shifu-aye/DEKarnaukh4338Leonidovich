@@ -1,0 +1,80 @@
+﻿<Window x:Class="DEKarnaukh4338.MainWindow"
+        x:Name="win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Путешествуй по России" Height="699.237" Width="995.514" MinHeight="699.237" MinWidth="995.514">
+    
+    <Window.Resources>
+        <sys:String x:Key="NullImage">
+            pack://application:,,,/Resources/picture.png
+        </sys:String>
+        <Style x:Key="Text">
+            <Setter Property="ItemsControl.FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="ItemsControl.FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid x:Name="gridik" Background="#445c93">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2" Background="#fac716">
+            <TextBlock Text="А.У.Е." Style="{StaticResource Text}" FontSize="35" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="0" Background="#bae3e8">
+            <Grid.RowDefinitions>
+                <RowDefinition>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Content="СЛЕПИЛ: КАРНАУХ АЛЕКСЕЙ" FontSize="18" FontFamily="Comic Sans MS" FontWeight="Bold" Grid.Column="2" HorizontalAlignment="Right" Margin="10,10,0,0" VerticalAlignment="Top" Height="87" Width="308"/>
+            <Button x:Name="HotelBtn" Content="Отели" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource Text}" Margin="0,68,218,0" Width="90" Click="HotelBtn_Click" Height="24"/>
+            <Image Margin="10,10,0,0" Source="Лого.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="87" Width="101"/>
+            <Label Content="Путешествуй по России" FontFamily="Comic Sans MS" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="116,22,0,0" VerticalAlignment="Top" Height="31" Width="190"/>
+            <Label Content="Введите текст для поиска:" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,14,123,0" Width="190" Grid.Column="1" Height="30" Style="{StaticResource Text}"/>
+            <TextBox x:Name="SearchTxt" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="550,14,326,0" Width="112" Height="25" Style="{StaticResource Text}" TextChanged="SearchTxt_TextChanged"/>
+            <Label Content="Выберите тип:" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="92,55,123,0" Width="110" Grid.Column="1" Height="30" Style="{StaticResource Text}"/>
+            <ComboBox x:Name="cmbBox" DisplayMemberPath="Name" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="550,59,326,0" Width="112" Height="26" Style="{StaticResource Text}" SelectionChanged="cmbBox_SelectionChanged"/>
+            <CheckBox x:Name="chbox" Content="Только актуальные туры" FontFamily="Comic Sans MS" Grid.Column="1" HorizontalAlignment="Center" Margin="156,90,5,0" VerticalAlignment="Top" Width="164" Height="16" Checked="chbox_Checked" Unchecked="chbox_Unchecked"/>
+        </Grid>
+
+
+        <ListView x:Name="LstView" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="543" Grid.Row="1" VerticalAlignment="Top" Width="968" SizeChanged="LstView_SizeChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel>
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Grid Width="450" Height="150">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Name}" Style="{StaticResource Text}" Grid.Row="0"/>
+                            <Image Source="{Binding ImgPath, FallbackValue={StaticResource NullImage}}" Grid.Row="1"/>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding FullViewPrice}" Style="{StaticResource Text}" Grid.Row="2"/>
+                            <UniformGrid Columns="2" Rows="1" Grid.Row="3">
+                                <TextBlock HorizontalAlignment="Left" Margin="3" Text="{Binding State}" Foreground="{Binding colorBrush}" Style="{StaticResource Text}" Grid.Column="0"/>
+                                <TextBlock HorizontalAlignment="Right" Margin="3" Text="{Binding ticketCount}" Style="{StaticResource Text}" Grid.Column="1"/>
+                            </UniformGrid>
+                        </Grid>
+
+                    </Border>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

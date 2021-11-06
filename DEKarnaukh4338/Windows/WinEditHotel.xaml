@@ -1,0 +1,38 @@
+﻿<Window x:Class="DEKarnaukh4338.Windows.WinEditHotel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DEKarnaukh4338.Windows"
+        mc:Ignorable="d"
+        Title="Окно редактирования отеля" Height="400" Width="300" MinHeight="400" MinWidth="300">
+    <Window.Resources>
+        <Style x:Key="Text">
+            <Setter Property="ItemsControl.FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="ItemsControl.FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Название Отеля:" Grid.Row="0" Style="{StaticResource Text}"/>
+        <Label Content="Количество Звезд:" Grid.Row="1" Style="{StaticResource Text}"/>
+        <Label Content="Описание Отеля:" Grid.Row="2" Style="{StaticResource Text}"/>
+        <Label Content="Страна:" Grid.Row="3" Style="{StaticResource Text}"/>
+        <TextBox x:Name="txtName" Grid.Row="0" Grid.Column="1" Style="{StaticResource Text}"/>
+        <TextBox x:Name="txtCntOfStrs" Grid.Row="1" Grid.Column="1" Style="{StaticResource Text}"/>
+        <TextBox x:Name="txtDscrp" Grid.Row="2" Grid.Column="1" Style="{StaticResource Text}"/>
+        <ComboBox x:Name="cmbCntry" Grid.Row="3" Grid.Column="1" DisplayMemberPath="Name" Style="{StaticResource Text}"/>
+        <Button x:Name="btnDelHotel" Content="Удалить" Click="btnDelHotel_Click" Grid.Row="4" Grid.Column="0" Style="{StaticResource Text}"/>
+        <Button x:Name="btnUpdHotelInfo" Content="Обновить" Click="btnUpdHotelInfo_Click" Grid.Column="1" Grid.Row="4" Style="{StaticResource Text}"/>
+    </Grid>
+</Window>
